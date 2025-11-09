@@ -61,7 +61,7 @@ print()
 a = [1, 2, 3, 4, 5, 6, 7, 8]
 res_1 = a[0:len(a):3]
 print(res_1)
-res_2 = a[0:len(a):3]
+res_2 = a[::3]
 print(res_2)
 print()
 
@@ -73,7 +73,7 @@ data[0] = 10
 data.insert(0, 0)
 data.remove(5)
 data.extend([8, 1.5])
-data.sort()
+data.sort(reverse=True)
 print(data)
 top_3 = data[0:3]
 print(top_3)
