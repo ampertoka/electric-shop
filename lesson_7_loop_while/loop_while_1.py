@@ -5,4 +5,49 @@
 #     print(i)
 #     i += 1
 # В ПИТОНЕ НЕТ ПОСТУСЛОВИЯ ЦИКЛА
+import time
 
+# посчитать сколько раз нужно отнять 7 от числа 112 чтоб получилось < 0
+# lst_1 = [0, 1, 2, ..., 112]
+
+ost = 112
+count = 0
+while ost >= 0:
+
+    if count > 100_000:
+        break
+
+    # ost -= 7
+    count += 1
+    print(count)
+# по завершению цикла
+else:
+    print('вышли из цикла')
+    print(count)
+
+# бесконечный цикл - healthcheck
+while True:
+    # запрос к базе данных поднялась ли она
+    print('еще не поднята')
+    break
+
+'''
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
+'''
+retries_count = 0
+while retries_count < 20:
+    # заставляет код ждать 5 секунд
+    time.sleep(0.1)
+
+    # запрос к базе данных поднялась ли она
+
+    print('еще не поднята')
+    retries_count += 1
+# не сработает если выходить из цикла break или ошибкой или еще каким-то способом
+else:
+    print('базу не удалось поднять')
