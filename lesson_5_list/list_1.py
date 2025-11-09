@@ -27,6 +27,7 @@ lst_4.clear()
 # ДОБАВЛЕНИ В КОНЕЦ
 lst_5 = [3, 4]
 lst_5.append(5)
+lst_5.extend([1,2,3])
 
 # print(lst_5)
 # УДАЛЕНИЕ ИЗ КОНЦА
@@ -34,10 +35,12 @@ last_elem = lst_5.pop()
 # print(last_elem)
 # print(lst_5)
 
-lst_6 = [1, 2, 3, 4, 5]
-# print(lst_6)
+lst_6 = [1, 2, 3, 4, 5, 3]
+print(lst_6)
+# del lst_6[-3]
 lst_6.remove(3)
-# print(lst_6)
+
+print(lst_6)
 
 lst_7 = [1, 2, 3, 4, 5]
 # print(lst_7)
