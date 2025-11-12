@@ -84,4 +84,5 @@ while 'e' in name:
 else:
     print(f'удалено: {name}')
 
-
+for ch in "Python":
+    print(ch)
