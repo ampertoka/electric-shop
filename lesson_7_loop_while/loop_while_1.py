@@ -12,9 +12,15 @@ import time
 
 ost = 112
 count = 0
+# усложнено. стоит избегать усложнений
+# while not (ost < 0):
+# достаточно просто
 while ost >= 0:
 
     if count > 100_000:
+        # любой из СЦенариев ниже не допустит проваливание в блок else:
+        # return
+        # raise Exception
         break
 
     # ost -= 7
@@ -39,6 +45,8 @@ while True:
       retries: 20
       start_period: 5s
 '''
+
+
 retries_count = 0
 while retries_count < 20:
     # заставляет код ждать 5 секунд
@@ -51,3 +59,23 @@ while retries_count < 20:
 # не сработает если выходить из цикла break или ошибкой или еще каким-то способом
 else:
     print('базу не удалось поднять')
+
+# у тебя есть приложение APp Store / google play
+# человек покупает у тебя в приложении что-то но оплачивает через магазин
+# APp Store / Google Play
+# WEBHOOK - такая штука которая ждет от внешнего ресурса (в нашем случае Apple
+# или google магаз) какого-то события определенного
+# и мы ждем события с названием "покупка" и как только его словили, что то делаем
+
+def webhook_payment_check():
+    return True
+
+payment_ok = False
+while not payment_ok:
+    # ЖДАТЬ ПОКА ПРИДЕТ ПОКУПКА ПО WEBHOOK
+    time.sleep(5)
+
+    # допустим здесь функция проверки оплаты
+    payment_ok = webhook_payment_check()
+else:
+    print('покупка оплачена')
