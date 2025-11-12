@@ -3,7 +3,17 @@
 #    выведи:
 #    - только фамилию с помощью среза
 #    - ту же строку ПРОПИСНЫМИ буквами (.upper())
-#
+
+name = 'Сергей'
+surname = 'Полтор'
+third_name = 'Михайлович'
+full_name = f'{name}, {surname}, {third_name}'
+print(full_name)
+print(full_name.find(surname))
+print(full_name[8:len(surname)+8])
+print(full_name.upper())
+
+
 # 2. Пользователь вводит строку с пробелами по краям.
 #    - убери пробелы по краям с помощью .strip()
 #    - разбей строку на слова через .split()
@@ -23,3 +33,15 @@
 #    - склей его в одну строку с разделителем ";"
 #    - посчитай, сколько раз встречается буква "a" в получившейся строке
 #    - проверь, начинается ли строка с "apple" и заканчивается ли на "orange".
+
+lst = ['apple', 'banana', 'orange']
+stroka = ';'.join(lst)
+print(stroka)
+counter = stroka.count('a')
+print(counter)
+print(stroka.startswith('apple') and stroka.endswith('orange'))
+help(stroka.count)
+
+print(dir(stroka))
+
+stroka.
