@@ -86,3 +86,59 @@ else:
 
 for ch in "Python":
     print(ch)
+
+# lstrip, rstrip, strip — обрезка пробелов, zfill — дополнение строки нулями слева
+
+
+# zfill(width) — дополняет строку слева нулями до нужной длины
+num_str = "42"
+print(num_str.zfill(5))   # 00042
+
+big_num = "123456"
+print(big_num.zfill(10))  # 0000123456
+
+# удобно для форматирования номеров: чеков, заказов, аккаунтов и т.п.
+order_id = "7"
+print(order_id.zfill(6))  # 000007
+
+# примеры обрезки пробелов
+raw_str = "   hello, world   "
+print(raw_str.lstrip())   # убирает пробелы слева
+print(raw_str.rstrip())   # убирает пробелы справа
+print(raw_str.strip())    # убирает пробелы с двух сторон
+
+print(raw_str.split()) # разделение разделителем (сепаратором)
+print(raw_str.split('world')) # разделение разделителем (сепаратором)
+# каждая функция строки генерит новую строку, поэтому можно делать цепь функций
+# function chain / function stream
+print(raw_str.strip().split(', '))
+
+full_name_list = ['egor', 'zubachenko', 'maksimovich']
+# объединение элементов последовательности в строку с указанием разделителя
+full_name_str = ','.join(full_name_list)
+# CSV - его еще можно в excel импортировать
+print(full_name_str)
+
+print(full_name_str.upper())
+print(full_name_str.lower())
+print(full_name_str.title())
+
+print(full_name_str.count('e'))
+# вернет -1 если не нашел
+print(full_name_str.find('e'))
+# вернет ValueError если не нашел
+print(full_name_str.index('e'))
+
+# не пропускает знаки препинания
+print(full_name_str.isalpha())
+# не пропускает пробоел
+print('1231 '.isdigit())
+
+# меняет кондировку строки (допустим если нужна поддержка китайских символов)
+# по умолчанию UTF-8 - признанный стандарт
+# для иероглифов, китайских, японкский, тайских - UTF-16 (16 байт на символ)
+print(full_name_str.encode('UTF-16'))
+
+print(full_name_str.startswith('egor'))
+print(full_name_str.endswith('ch'))
+
