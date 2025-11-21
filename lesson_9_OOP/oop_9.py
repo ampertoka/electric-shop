@@ -2,6 +2,12 @@
 # РОДИТЕЛЬ или БАЗОВЫЙ КЛАСС всегда обладает наиболее общим
 from abc import ABC
 
+# как классы в энтерпрайзе испольщзуются
+# у меня есть поставщик нейронок (LLMProvider), который описывает базовые методы:
+# .call('текущий курс рубля в доллару'), result = .result()
+# а реализация конкретная будет в GeminiProvider(LMMProvider),
+# OpenAIProvider(LLMProvider) и т.д.
+
 
 class PetAnimal:
 
