@@ -4,44 +4,52 @@
 #    - только фамилию с помощью среза
 #    - ту же строку ПРОПИСНЫМИ буквами (.upper())
 
-name = 'Сергей'
-surname = 'Полтор'
-third_name = 'Михайлович'
-full_name = f'{name}, {surname}, {third_name}'
-print(full_name)
-print(full_name.find(surname))
-print(full_name[8:len(surname)+8])
-print(full_name.upper())
+# name = 'Сергей'
+# surname = 'Полтор'
+# third_name = 'Михайлович'
+# full_name = f'{name}, {surname}, {third_name}'
+# print(full_name)
+# print(full_name.find(surname))
+# print(full_name[8:len(surname)+8])
+# print(full_name.upper())
 
 
 # 2. Пользователь вводит строку с пробелами по краям.
 #    - убери пробелы по краям с помощью .strip()
 #    - разбей строку на слова через .split()
 #    - выведи список слов и количество слов в строке.
-#
+# a = input().strip().split()
+# print(a, len(a))
+
 # 3. Дана строка: "00123".
 #    - преврати её в число int
 #    - увеличь число на 10
 #    - снова сделай строку и дополни нулями слева до длины 6 (используй .zfill()).
-#
+# a = int("00123")+10
+# a = str(a).zfill(6)
+# print(a)
+
 # 4. Дана строка: "python,fastapi,django".
 #    - разбей её в список технологий
 #    - пройди по списку циклом for и выведи каждую технологию в формате:
 #      "Технология: <ИМЯ_ТЕХНОЛОГИИ В ВЕРХНЕМ РЕГИСТРЕ>"
-#
+# a = "python,fastapi,django".split()
+# for i in a:
+#     print(f'Технология: {i}')
+
+
 # 5. Пусть есть список: ['apple', 'banana', 'orange'].
 #    - склей его в одну строку с разделителем ";"
 #    - посчитай, сколько раз встречается буква "a" в получившейся строке
 #    - проверь, начинается ли строка с "apple" и заканчивается ли на "orange".
 
-lst = ['apple', 'banana', 'orange']
-stroka = ';'.join(lst)
-print(stroka)
-counter = stroka.count('a')
-print(counter)
-print(stroka.startswith('apple') and stroka.endswith('orange'))
-help(stroka.count)
+# lst = ['apple', 'banana', 'orange']
+# stroka = ';'.join(lst)
+# print(stroka)
+# counter = stroka.count('a')
+# print(counter)
+# print(stroka.startswith('apple') and stroka.endswith('orange'))
+# help(stroka.count)
+#
+# print(dir(stroka))
 
-print(dir(stroka))
-
-stroka.
