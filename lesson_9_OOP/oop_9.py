@@ -13,7 +13,7 @@ from abc import ABC
 # camel-case format
 class PetAnimal:
 
-    # СВОЙСТВА класса или ПОЛЯ класса
+    # СВОЙСТВА / ПОЛЯ / АТРИБУТЫ класса
     name: str = None
     age: int = None
 
@@ -26,6 +26,7 @@ class PetAnimal:
     # self - ОБЪЕКТА класса, а не класс. поэтому попытки обратиться к нему
     # не имея созданный объект вызовут ошибку
     # ЭТО КОНСТРУКТОР класса
+    # создает INSTANCE объектов. но называется инициализация
     def __init__(self, name, age):
         # даже если нет свойств класса, записав в них первый раз что-то
         # Пайтон их автоматически (динамически) создаст
@@ -57,6 +58,10 @@ class Cat(PetAnimal):
 # любой НАСЛЕДНИК создан для того чтоб КОНКРЕТИЗИРОВАТЬ
 # свойства и функционал РОДИТЕЛЯ
 # НАСЛЕДНИКИ совершенно не обязательны, если РОДИТЕЛЬ самодостаточен
+
+# если б писали на JAVA:
+# class Dog extends PetAnimal, ..., ...
+
 class Dog(PetAnimal):
     # def __init__(self, name, age, breed):
     #     super().__init__(name, age)
@@ -70,9 +75,9 @@ class Dog(PetAnimal):
         super().wake_up()
         super().make_sound()
 
-# dog = Dog("Buddy", 3, "Golden Retriever")
-# dog.make_sound()
-# dog.sleep()
+dog = Dog("Buddy", 3, "Golden Retriever")
+dog.make_sound()
+dog.sleep()
 # print(dog.name)
 # print(dog.age)
 # ДИНАМИЧЕСКОЕ СОЗДАНИЕ СВОЙСТВ КЛАССА, лучше так не делать
@@ -111,6 +116,7 @@ pet_1 = PetAnimal(name='Conos', age=3)
 # вызов КОНСТРУКТОРа класса
 # фигурные скобоки после имени класса вызывают КОНСТРУКТОР класса
 # и создают ОБЪЕКТ класса
+# ИНИЦИАЛИЗАЦИЯ / ИНСТАНЦИРОВАНИЕ, создание ЭКЗЕМПЛЯРА / ОБЪЕКТА класса
 # pet_no_init = PetAnimal()
 # print(pet_no_init)
 # pet_no_init.make_sound()
