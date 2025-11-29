@@ -24,11 +24,11 @@ class PetAnimal:
     # self - ОБЪЕКТА класса, а не класс. поэтому попытки обратиться к нему
     # не имея созданный объект вызовут ошибку
     # ЭТО КОНСТРУКТОР класса
-    # def __init__(self, name, age):
-    #     # даже если нет свойств класса, записав в них первый раз что-то
-    #     # Пайтон их автоматически (динамически) создаст
-    #     self.name = name
-    #     self.age = age
+    def __init__(self, name, age):
+        # даже если нет свойств класса, записав в них первый раз что-то
+        # Пайтон их автоматически (динамически) создаст
+        self.name = name
+        self.age = age
     def make_sound(self):
         print("Звук Питомца")
     def sleep(self):
@@ -93,7 +93,7 @@ class Car(ABC):
         pass
 
 # ячейки памяти и все такое
-# pet_1 = PetAnimal(name='Conos', age=3)
+pet_1 = PetAnimal(name='Conos', age=3)
 # print(pet_1)
 # pet_2 = PetAnimal(name='Alice', age=6)
 # print(pet_2)
@@ -107,6 +107,16 @@ class Car(ABC):
 # вызов КОНСТРУКТОРа класса
 # фигурные скобоки после имени класса вызывают КОНСТРУКТОР класса
 # и создают ОБЪЕКТ класса
-pet_no_init = PetAnimal()
-print(pet_no_init)
-pet_no_init.make_sound()
+# pet_no_init = PetAnimal()
+# print(pet_no_init)
+# pet_no_init.make_sound()
+
+# ПРОВЕРКА ТИПА ДАННЫХ
+print(type(pet_1.name))
+print(type(pet_1.age))
+print(type(pet_1))
+
+
+# ПРОВЕРКА ТИПА ДАННЫХ ЧТОБ ВЫЗЫВАТЬ ФУНКЦИЮ
+if type(pet_1.name) == str:
+    print(pet_1.name.upper())
