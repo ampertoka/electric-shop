@@ -8,7 +8,9 @@ from abc import ABC
 # а реализация конкретная будет в GeminiProvider(LMMProvider),
 # OpenAIProvider(LLMProvider) и т.д.
 
+# git-hub-case когда все через тире (это еще javascript case)
 
+# camel-case format
 class PetAnimal:
 
     # СВОЙСТВА класса или ПОЛЯ класса
@@ -29,6 +31,8 @@ class PetAnimal:
         # Пайтон их автоматически (динамически) создаст
         self.name = name
         self.age = age
+
+    # snake_case
     def make_sound(self):
         print("Звук Питомца")
     def sleep(self):
