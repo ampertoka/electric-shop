@@ -24,6 +24,7 @@ class ProductCategory(str, Enum):
     TABLET = "tablet"
     ACCESSORY = "accessory"
     CABLE = "cable"
+    MONITOR = "monitor"
 
 
 class OrderStatus(str, Enum):

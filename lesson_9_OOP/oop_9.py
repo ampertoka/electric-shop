@@ -2,7 +2,8 @@
 # РОДИТЕЛЬ или БАЗОВЫЙ КЛАСС всегда обладает наиболее общим
 from abc import ABC
 
-# как классы в энтерпрайзе испольщзуются
+
+# как классы в энтерпрайзе используются
 # у меня есть поставщик нейронок (LLMProvider), который описывает базовые методы:
 # .call('текущий курс рубля в доллару'), result = .result()
 # а реализация конкретная будет в GeminiProvider(LMMProvider),
@@ -12,7 +13,6 @@ from abc import ABC
 
 # camel-case format
 class PetAnimal:
-
     # СВОЙСТВА / ПОЛЯ / АТРИБУТЫ класса
     name: str = None
     age: int = None
@@ -21,7 +21,7 @@ class PetAnimal:
     # self ВСЕГДА передается первым параметров в функциях класса
     # именно поэтому они называются МЕТОДАМИ, потому что self говорит о
     # ПРИНАДЛЕЖНОСТИ к классу, в котором пишется функция.
-    # поэтому функция в класси и называется МЕТОД КЛАССА
+    # поэтому функция в класс и называется МЕТОД КЛАССА
 
     # self - ОБЪЕКТА класса, а не класс. поэтому попытки обратиться к нему
     # не имея созданный объект вызовут ошибку
@@ -36,9 +36,11 @@ class PetAnimal:
     # snake_case
     def make_sound(self):
         print("Звук Питомца")
+
     def sleep(self):
         print(self)
         print(f'{self.name} - zzz...')
+
     def wake_up(self):
         print('Проснулся')
 
@@ -52,8 +54,10 @@ class PetAnimal:
     def __call__(self, *args, **kwargs):
         return 'call PetAnimal'
 
+
 class Cat(PetAnimal):
     pass
+
 
 # любой НАСЛЕДНИК создан для того чтоб КОНКРЕТИЗИРОВАТЬ
 # свойства и функционал РОДИТЕЛЯ
@@ -70,18 +74,22 @@ class Dog(PetAnimal):
     # override, переопределение
     def make_sound(self):
         print("Гав")
+
     def wake_up(self):
         print('и сделал ГАВ')
         super().wake_up()
         super().make_sound()
 
+
 dog = Dog("Buddy", 3, "Golden Retriever")
 dog.make_sound()
 dog.sleep()
+
+
 # print(dog.name)
 # print(dog.age)
 # ДИНАМИЧЕСКОЕ СОЗДАНИЕ СВОЙСТВ КЛАССА, лучше так не делать
-# всегда лучше испольщзовать только те свойства и методы, что прописаны в классе
+# всегда лучше использовать только те свойства и методы, что прописаны в классе
 # dog.name_2 = 2
 # print(dog.name_2)
 # dog.wake_up()
@@ -96,10 +104,13 @@ class Car(ABC):
         :return:
         """
         pass
+
     def drive(self):
         pass
+
     def stop(self):
         pass
+
 
 # ячейки памяти и все такое
 pet_1 = PetAnimal(name='Conos', age=3)
@@ -114,7 +125,7 @@ pet_1 = PetAnimal(name='Conos', age=3)
 # print(id(pet_4))
 
 # вызов КОНСТРУКТОРа класса
-# фигурные скобоки после имени класса вызывают КОНСТРУКТОР класса
+# фигурные скобки после имени класса вызывают КОНСТРУКТОР класса
 # и создают ОБЪЕКТ класса
 # ИНИЦИАЛИЗАЦИЯ / ИНСТАНЦИРОВАНИЕ, создание ЭКЗЕМПЛЯРА / ОБЪЕКТА класса
 # pet_no_init = PetAnimal()
@@ -125,7 +136,6 @@ pet_1 = PetAnimal(name='Conos', age=3)
 print(type(pet_1.name))
 print(type(pet_1.age))
 print(type(pet_1))
-
 
 # ПРОВЕРКА ТИПА ДАННЫХ ЧТОБ ВЫЗЫВАТЬ ФУНКЦИЮ
 if type(pet_1.name) == str:
