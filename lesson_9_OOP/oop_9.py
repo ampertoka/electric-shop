@@ -81,9 +81,9 @@ class Dog(PetAnimal):
         super().make_sound()
 
 
-dog = Dog("Buddy", 3, "Golden Retriever")
-dog.make_sound()
-dog.sleep()
+# dog = Dog("Buddy", 3, "Golden Retriever")
+# dog.make_sound()
+# dog.sleep()
 
 
 # print(dog.name)
