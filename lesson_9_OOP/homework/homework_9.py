@@ -127,7 +127,7 @@ gasCarMers.stop()
 #   9) Память и ссылки (id)
 #   - Создай pet_a = PetAnimalInit("Rex", 2) и сделай pet_b = pet_a.
 #   - Выведи id(pet_a) и id(pet_b), докажи, что это одна и та же ячейка (изменение pet_b.name меняет pet_a.name).
-pet_a = PetAnimalInit("Rex", 2)
+pet_a = PetAnimalInit('Rex', 2)
 pet_b = pet_a
 print(id(pet_a))
 print(id(pet_b))
