@@ -4,6 +4,7 @@
 
 Импортируй необходимые классы из oop_10.py и создавай свои классы здесь
 """
+from enum import Enum
 
 from lesson_10_OOP_advanced.oop_10 import (
 
@@ -68,12 +69,18 @@ class Monitor(Product):
     def brand(self, value: str):
         self._brand = value
 
-monitor_dell = Monitor()
-print(monitor_dell.screen_size)
-print(monitor_dell._brand)
-print(monitor_dell.brand)
-monitor_dell.brand = 1
-print(monitor_dell.brand)
+# monitor_dell = Monitor()
+# print(monitor_dell.screen_size)
+# print(monitor_dell._brand)
+# print(monitor_dell.brand)
+# monitor_dell.brand = 1
+# print(monitor_dell.brand)
+class Role(str, Enum):
+    """Категории ролей"""
+    ADMIN = "admin"
+    MANAGER = "manager"
+# role_1 = Role('wera', 'kni')
+# print(role_1)
 # ============= ЗАДАНИЕ 2: SmartWatch =============
 
 # TODO: Создай класс SmartWatch
@@ -85,6 +92,31 @@ print(monitor_dell.brand)
 
 
 # ============= ЗАДАНИЕ 4: DiscountManager =============
+"""
+### 4️⃣ Создай систему скидок - класс DiscountManager
+
+**Задача:**
+- Создай класс `DiscountManager` для управления скидками
+- Методы:
+  - `apply_seasonal_discount(inventory: Inventory, discount: float)` - применяет скидку ко всем товарам
+  - `apply_clearance_discount(inventory: Inventory, min_stock: int, discount: float)` - применяет скидку к товарам с остатком меньше `min_stock`
+  - `apply_premium_discount(inventory: Inventory, min_price: float, discount: float)` - скидка на дорогие товары (цена >= min_price)
+  - `reset_all_discounts(inventory: Inventory)` - сбрасывает все скидки (устанавливает в 0)
+
+**Проверка:**
+```python
+discount_mgr = DiscountManager()
+discount_mgr.apply_clearance_discount(inventory, min_stock=10, discount=20)
+# Все товары с остатком < 10 получат скидку 20%
+```
+"""
+class DiscountManager:
+    def apply_seasonal_discount(self, inventory, discount: float):
+        for category in ProductCategory:
+            inventory.apply_discount_to_category(category.value, discount)
+
+
+
 
 # TODO: Создай класс DiscountManager
 
