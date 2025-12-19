@@ -4,7 +4,7 @@
 
 Принципы ООП:
 1. Инкапсуляция - сокрытие данных (приватные поля, геттеры/сеттеры)
-2. Наследование - иерархия классов Product -> Smartphone, Laptop, etc.
+2. Наследование - иерархия классов Product -> Smartphone
 3. Полиморфизм - разные классы реализуют одинаковые методы по-своему
 """
 
@@ -244,12 +244,20 @@ class Inventory:
         return list(self._products.values())
     
     def get_products_by_category(self, category: ProductCategory) -> List[Product]:
-        """Возвращает товары по категории (Полиморфизм)"""
-        return [p for p in self._products.values() if p.get_category() == category]
+        """Возвращает товары по категории"""
+        result = []
+        for product in self._products.values():
+            if product.get_category() == category:
+                result.append(product)
+        return result
     
     def get_available_products(self) -> List[Product]:
         """Возвращает товары в наличии"""
-        return [p for p in self._products.values() if p.is_available()]
+        result = []
+        for product in self._products.values():
+            if product.is_available():
+                result.append(product)
+        return result
     
     def get_total_inventory_value(self) -> float:
         """Вычисляет общую стоимость инвентаря"""

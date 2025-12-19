@@ -53,16 +53,31 @@ print(f"Игровой: {monitor.is_gaming_monitor()}")
 **Задача:**
 - Создай класс `DiscountManager` для управления скидками
 - Методы:
-    - `apply_seasonal_discount(inventory: Inventory, discount: float)` - применяет скидку ко всем товарам
-    - `apply_clearance_discount(inventory: Inventory, min_stock: int, discount: float)` - применяет скидку к товарам с остатком меньше `min_stock`
-    - `apply_premium_discount(inventory: Inventory, min_price: float, discount: float)` - скидка на дорогие товары (цена >= min_price)
-    - `reset_all_discounts(inventory: Inventory)` - сбрасывает все скидки (устанавливает в 0)
+    - `apply_seasonal_discount(inventory: Inventory, discount: float)` - применяет скидку ко всем товарам:
+      - Используй цикл `for` по всем товарам из `inventory.get_all_products()`
+      - Для каждого товара установи `product.discount_percent = discount`
+    - `apply_clearance_discount(inventory: Inventory, min_stock: int, discount: float)` - применяет скидку к товарам с остатком меньше `min_stock`:
+      - Используй цикл `for` по всем товарам
+      - Используй условие `if product.stock < min_stock:` для проверки
+      - Если условие выполнено - установи скидку
+    - `apply_premium_discount(inventory: Inventory, min_price: float, discount: float)` - скидка на дорогие товары (цена >= min_price):
+      - Используй цикл `for` по всем товарам
+      - Используй условие `if product.price >= min_price:` для проверки
+      - Если условие выполнено - установи скидку
+    - `reset_all_discounts(inventory: Inventory)` - сбрасывает все скидки (устанавливает в 0):
+      - Используй цикл `for` по всем товарам
+      - Установи `product.discount_percent = 0` для каждого товара
 
 **Проверка:**
 ```python
 discount_mgr = DiscountManager()
 discount_mgr.apply_clearance_discount(inventory, min_stock=10, discount=20)
 # Все товары с остатком < 10 получат скидку 20%
+
+# Проверка
+for product in inventory.get_all_products():
+    if product.stock < 10:
+        print(f"{product.name}: скидка {product.discount_percent}%")
 ```
 
 ---
@@ -111,15 +126,40 @@ print(watch.is_suitable_for_sports())  # Должно вывести True
   - `main_camera_mp: int` - мегапиксели основной камеры
   - `front_camera_mp: int` - мегапиксели фронтальной камеры
   - `has_optical_zoom: bool` - наличие оптического зума (True/False)
-- Сохрани эти значения в приватные поля
+- В конструкторе:
+  - Вызови `super().__init__(...)` со всеми параметрами для Smartphone
+  - Сохрани новые значения в приватные поля: `self._main_camera_mp`, `self._front_camera_mp`, `self._has_optical_zoom`
 - Переопредели метод `get_specifications()`:
-  - Вызови `super().get_specifications()` для получения базовых характеристик смартфона
-  - Добавь в словарь информацию о камерах (main_camera, front_camera, optical_zoom)
-  - Верни обновленный словарь
+  - Вызови `specs = super().get_specifications()` для получения базовых характеристик смартфона
+  - Добавь в словарь `specs` информацию о камерах:
+    - `specs["main_camera"] = f"{self._main_camera_mp} МП"`
+    - `specs["front_camera"] = f"{self._front_camera_mp} МП"`
+    - `specs["optical_zoom"] = "Да" if self._has_optical_zoom else "Нет"`
+  - Верни словарь `specs`
 - Добавь метод `get_camera_rating()` → используй условия `if-elif-else`:
   - "Отличная" если `main_camera_mp >= 48` и `has_optical_zoom == True`
   - "Хорошая" если `main_camera_mp >= 48`
   - "Средняя" в остальных случаях
+
+**Проверка:**
+```python
+phone = SmartphoneWithCamera(
+    name="iPhone 15 Pro Max",
+    price=119990,
+    brand="Apple",
+    model="15 Pro Max",
+    screen_size=6.7,
+    ram_gb=8,
+    storage_gb=512,
+    battery_mah=4441,
+    main_camera_mp=48,
+    front_camera_mp=12,
+    has_optical_zoom=True,
+    stock=10
+)
+print(phone.get_specifications())
+print(f"Оценка камеры: {phone.get_camera_rating()}")  # Должно вывести "Отличная"
+```
 
 ---
 
