@@ -26,10 +26,10 @@ uvicorn lesson_10_OOP_advanced.fastapi_app:app --reload
 ```
 
 **Документация:**
-- 🚀 [QUICKSTART.md](lesson_10_OOP_advanced/QUICKSTART.md) - начни отсюда!
-- 📖 [OOP_CHEATSHEET.md](lesson_10_OOP_advanced/OOP_CHEATSHEET.md) - шпаргалка по ООП
-- 📚 [INDEX.md](lesson_10_OOP_advanced/INDEX.md) - полный индекс материалов
-- 📝 [homework_10.md](lesson_10_OOP_advanced/homework/homework_10.md) - 10 заданий для практики
+- 🚀 [QUICKSTART.md](lesson_10-13_OOP_advanced/QUICKSTART.md) - начни отсюда!
+- 📖 [OOP_CHEATSHEET.md](lesson_10-13_OOP_advanced/OOP_CHEATSHEET.md) - шпаргалка по ООП
+- 📚 [INDEX.md](lesson_10-13_OOP_advanced/INDEX.md) - полный индекс материалов
+- 📝 [homework_10.md](lesson_10-13_OOP_advanced/homework/homework_10.md) - 10 заданий для практики
 
 ---
 
