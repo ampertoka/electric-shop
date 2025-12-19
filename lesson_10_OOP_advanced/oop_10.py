@@ -30,6 +30,7 @@ class Product:
     
     # Счетчик для генерации ID (класс-переменная)
     _id_counter = 0
+    _price = 0
     
     def __init__(self, name: str, price: float, description: str = "", stock: int = 0):
         # Инкапсуляция: приватные поля (с подчеркиванием)

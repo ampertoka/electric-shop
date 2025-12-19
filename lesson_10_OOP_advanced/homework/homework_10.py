@@ -53,9 +53,9 @@ from datetime import datetime
 
 class Monitor(Product):
     """Класс монитора - пример наследования от Product"""
-    
-    def __init__(self, name: str, price: float, brand: str, 
-                 screen_size: float, resolution: str, 
+
+    def __init__(self, name: str, price: float, brand: str,
+                 screen_size: float, resolution: str,
                  refresh_rate: int, panel_type: str,
                  description: str = "", stock: int = 0):
         # Вызываем конструктор родительского класса
@@ -76,20 +76,21 @@ class Monitor(Product):
             'refresh_rate': f"{self._refresh_rate} Гц",
             'panel_type': self._panel_type
         }
-    
+
     def get_warranty_period(self) -> int:
         """Гарантия на монитор - 24 месяца"""
         return 24
-    
+
     def get_category(self) -> ProductCategory:
         """Категория товара - монитор"""
         return ProductCategory.MONITOR
-    
+
     def is_gaming_monitor(self) -> bool:
         """Проверяет, является ли монитор игровым (частота >= 144 Гц)"""
         if self._refresh_rate >= 144:
             return True
         return False
+
 
 # Пример использования Monitor:
 # monitor = Monitor(
@@ -120,16 +121,21 @@ class SmartWatch(Product):
     def __init__(
             self, brand: str, model: str, display_size: float,
             battery_days: int, has_gps: bool,
-            waterproof_rating: str
+            waterproof_rating: str,
+            name: str,
+            price: float, description: str,
+            stock: int
     ):
-        super(SmartWatch, self).__init__()
+        super().__init__(name=name, price=price,
+                         description=description,
+                         stock=stock)
         self._brand = brand
         self._model = model
         self._display_size = display_size
         self._battery_days = battery_days
         self._has_gps = has_gps
         self._waterproof_rating = waterproof_rating
-        
+
 
 # ПОДСКАЗКА - структура класса:
 # class SmartWatch(Product):
