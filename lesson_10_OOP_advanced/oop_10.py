@@ -27,19 +27,32 @@ class Product:
     Базовый класс для всех товаров
     Демонстрирует ИНКАПСУЛЯЦИЮ и НАСЛЕДОВАНИЕ
     """
-    
+
+    # СВОЙСТВА / АТРИБУТЫ класса (значения по умолчанию, дефолт)
     # Счетчик для генерации ID (класс-переменная)
     _id_counter = 0
-    _price = 0
+    _name: str = ''
+    _price: float = 0
+    _description: str = ''
+    _stock: int = 0
     
-    def __init__(self, name: str, price: float, description: str = "", stock: int = 0):
+    def __init__(
+            self, name: str = '', price: float = 0,
+            description: str = '', stock: int = 0
+    ):
         # Инкапсуляция: приватные поля (с подчеркиванием)
         Product._id_counter += 1
         self._id = f"PROD_{Product._id_counter:05d}"
-        self._name = name
-        self._price = price
-        self._description = description
-        self._stock = stock
+
+        if name:
+            self._name = name
+        if price:
+            self._price = price
+        if description:
+            self._description = description
+        if stock:
+            self._stock = stock
+
         self._created_at = datetime.now()
         self._discount_percent = 0.0
     

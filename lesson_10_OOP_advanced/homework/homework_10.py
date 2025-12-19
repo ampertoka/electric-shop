@@ -126,9 +126,10 @@ class SmartWatch(Product):
             price: float, description: str,
             stock: int
     ):
-        super().__init__(name=name, price=price,
-                         description=description,
-                         stock=stock)
+        super().__init__(
+            name=name, price=price, description=description,
+            stock=stock
+        )
         self._brand = brand
         self._model = model
         self._display_size = display_size
