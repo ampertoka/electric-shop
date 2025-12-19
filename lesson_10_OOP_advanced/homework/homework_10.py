@@ -206,15 +206,68 @@ class Monitor(Product):
 # ============= ЗАДАНИЕ 5: Review =============
 
 # TODO: Создай класс Review
-# Используй условия if для валидации рейтинга и комментария
 # Смотри задание 5 в homework_10.md
+# 
+# ПОДСКАЗКА - структура класса:
+# class Review:
+#     _id_counter = 0  # Счетчик для ID (как в Product)
+#     
+#     def __init__(self, product_id: str, customer_name: str, 
+#                  rating: int, comment: str):
+#         # Валидация рейтинга
+#         if rating < 1 or rating > 5:
+#             raise ValueError("Рейтинг должен быть от 1 до 5")
+#         
+#         # Валидация комментария
+#         if not comment:
+#             raise ValueError("Комментарий не может быть пустым")
+#         
+#         # Генерация ID
+#         Review._id_counter += 1
+#         self._id = f"REV_{Review._id_counter:05d}"
+#         
+#         # Сохранение полей
+#         self._product_id = product_id
+#         self._customer_name = customer_name
+#         self._rating = rating
+#         self._comment = comment
+#         self._created_at = datetime.now()
+#     
+#     def is_positive(self) -> bool:
+#         if self._rating >= 4:
+#             return True
+#         return False
+#     
+#     def to_dict(self) -> dict:
+#         return {
+#             "id": self._id,
+#             "product_id": self._product_id,
+#             "customer_name": self._customer_name,
+#             "rating": self._rating,
+#             "comment": self._comment,
+#             "created_at": self._created_at.isoformat()
+#         }
 
 
 # ============= ЗАДАНИЕ 6: PaymentMethod =============
 
 # TODO: Создай 3 простых класса для способов оплаты
-# CreditCardPayment, CashPayment, CryptocurrencyPayment
-# Используй цикл for для демонстрации работы всех способов
+# Смотри задание 6 в homework_10.md
+# 
+# ПОДСКАЗКА - пример класса:
+# class CreditCardPayment:
+#     def __init__(self, card_number: str):
+#         self._card_number = card_number
+#     
+#     def process_payment(self, amount: float):
+#         print(f"Оплата картой {self._card_number} на сумму {amount}₽ прошла успешно")
+#     
+#     def get_payment_type(self) -> str:
+#         return "Оплата картой"
+# 
+# # Аналогично создай CashPayment и CryptocurrencyPayment
+# # Для CashPayment не нужен параметр в __init__ (просто self)
+# # Для CryptocurrencyPayment нужен wallet_address: str
 
 
 # ============= ТЕСТИРОВАНИЕ =============
