@@ -23,7 +23,7 @@
         def get_warranty_period(self) -> int:
             return 12
 """
-from lesson_10_OOP_advanced.oop_10 import (
+from lesson_10-13_OOP_advanced.oop_10 import (
     Inventory,
     ProductCategory,
     Smartphone,
@@ -116,7 +116,21 @@ class Monitor(Product):
 
 # TODO: Создай класс SmartWatch, который наследует Product
 # Смотри задание 2 в homework_10.md
-# 
+class SmartWatch(Product):
+    def __init__(
+            self, brand: str, model: str, display_size: float,
+            battery_days: int, has_gps: bool,
+            waterproof_rating: str
+    ):
+        super(SmartWatch, self).__init__()
+        self._brand = brand
+        self._model = model
+        self._display_size = display_size
+        self._battery_days = battery_days
+        self._has_gps = has_gps
+        self._waterproof_rating = waterproof_rating
+        
+
 # ПОДСКАЗКА - структура класса:
 # class SmartWatch(Product):
 #     def __init__(self, name, price, brand, model, display_size, 
