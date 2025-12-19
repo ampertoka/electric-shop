@@ -23,7 +23,7 @@
         def get_warranty_period(self) -> int:
             return 12
 """
-from lesson_10-13_OOP_advanced.oop_10 import (
+from lesson_10_OOP_advanced.oop_10 import (
     Inventory,
     ProductCategory,
     Smartphone,
