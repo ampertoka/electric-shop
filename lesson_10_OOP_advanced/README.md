@@ -98,6 +98,7 @@ python lesson_10_OOP_advanced/homework/homework_10.py
 ```python
 from lesson_10_OOP_advanced.oop_10 import Smartphone
 
+# Создаем смартфон
 phone = Smartphone(
     name="iPhone 15 Pro",
     price=99990,
@@ -110,9 +111,19 @@ phone = Smartphone(
     stock=15
 )
 
+# Используем свойства (геттеры)
 print(phone.name)  # iPhone 15 Pro
 print(phone.price)  # 99990
+print(phone.stock)  # 15
+
+# Используем методы
 print(phone.get_category())  # ProductCategory.SMARTPHONE
+print(phone.get_specifications())  # {'brand': 'Apple', 'model': '15 Pro', ...}
+print(phone.get_battery_life_estimate())  # Среднее (до 1 дня)
+
+# Применяем скидку
+phone.discount_percent = 10
+print(phone.get_final_price())  # 89991.0 (цена со скидкой)
 ```
 
 ### Работа с инвентарем

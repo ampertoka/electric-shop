@@ -169,11 +169,19 @@ print(f"Оценка камеры: {phone.get_camera_rating()}")  # Должно
 - Создай функцию `generate_product_report(products: List[Product]) -> str`
 - Функция должна:
   - Принимать список товаров
-  - Использовать цикл `for` для перебора всех товаров
-  - Для каждого товара получить: название (`product.name`), категорию (`product.get_category().value`), цену (`product.price`), гарантию (`product.get_warranty_period()`)
-  - Использовать цикл для подсчета общей стоимости (суммируй `product.price` для каждого товара)
-  - Использовать `len(products)` для подсчета количества товаров
-  - Возвращать отформатированную строку с отчетом
+  - Создать переменную `report = "=== ОТЧЕТ ПО ТОВАРАМ ===\n"`
+  - Использовать цикл `for i, product in enumerate(products, 1):` для перебора всех товаров с нумерацией
+  - Для каждого товара получить:
+    - Название: `product.name`
+    - Категорию: `product.get_category().value`
+    - Цену: `product.price`
+    - Гарантию: `product.get_warranty_period()`
+  - Добавить строку в отчет: `report += f"{i}. {name} [{category}] - {price}₽ (гарантия: {warranty} мес.)\n"`
+  - После цикла добавить разделитель: `report += "------------------------\n"`
+  - Подсчитать общую стоимость: используй цикл `for product in products:` и суммируй `product.price`
+  - Добавить итоги: `report += f"Всего товаров: {len(products)}\n"`
+  - Добавить: `report += f"Общая стоимость: {total}₽\n"`
+  - Вернуть строку `report`
 
 **Пример вывода:**
 ```
@@ -186,7 +194,9 @@ print(f"Оценка камеры: {phone.get_camera_rating()}")  # Должно
 Общая стоимость: 215970₽
 ```
 
-**Подсказка:** Используй цикл `for i, product in enumerate(products, 1):` для нумерации товаров
+**Подсказка:** 
+- Используй `enumerate(products, 1)` для нумерации с 1
+- Для подсчета суммы создай переменную `total = 0` и в цикле делай `total += product.price`
 
 ---
 
@@ -199,12 +209,28 @@ print(f"Оценка камеры: {phone.get_camera_rating()}")  # Должно
   - `rating: int` - оценка от 1 до 5
   - `comment: str` - текст отзыва
 - В конструкторе:
-  - Проверь условием `if`: если `rating < 1` или `rating > 5`, выброси ошибку `ValueError("Рейтинг должен быть от 1 до 5")`
-  - Проверь условием `if`: если `comment` пустой (используй `if not comment:`), выброси ошибку `ValueError("Комментарий не может быть пустым")`
-  - Сохрани значения в приватные поля: `self._id` (можно использовать счетчик), `self._product_id`, `self._customer_name`, `self._rating`, `self._comment`, `self._created_at = datetime.now()`
+  - Проверь условием `if rating < 1 or rating > 5:` - если True, выброси ошибку `raise ValueError("Рейтинг должен быть от 1 до 5")`
+  - Проверь условием `if not comment:` - если True (комментарий пустой), выброси ошибку `raise ValueError("Комментарий не может быть пустым")`
+  - Создай счетчик для ID (как в Product): добавь `Review._id_counter = 0` перед `__init__`, затем в конструкторе: `Review._id_counter += 1` и `self._id = f"REV_{Review._id_counter:05d}"`
+  - Сохрани значения в приватные поля: `self._product_id`, `self._customer_name`, `self._rating`, `self._comment`, `self._created_at = datetime.now()`
 - Методы:
-  - `is_positive()` - используй условие `if`: верни `True` если `self._rating >= 4`
-  - `to_dict()` - верни словарь со всеми полями отзыва
+  - `is_positive()` - используй условие `if self._rating >= 4:` верни `True`, иначе `False`
+  - `to_dict()` - верни словарь: `{"id": self._id, "product_id": self._product_id, "customer_name": self._customer_name, "rating": self._rating, "comment": self._comment, "created_at": self._created_at.isoformat()}`
+
+**Проверка:**
+```python
+review1 = Review(
+    product_id="PROD_00001",
+    customer_name="Иван Иванов",
+    rating=5,
+    comment="Отличный товар!"
+)
+print(review1.is_positive())  # Должно вывести True
+print(review1.to_dict())
+
+# Попробуй создать отзыв с неправильным рейтингом (должна быть ошибка):
+# review2 = Review("PROD_00001", "Петр", 6, "Хорошо")  # ValueError!
+```
 
 ---
 

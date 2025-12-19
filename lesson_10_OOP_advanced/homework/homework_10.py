@@ -3,6 +3,25 @@
 Закрепление ООП на примере магазина электронной техники
 
 Импортируй необходимые классы из oop_10.py и создавай свои классы здесь
+
+ПРИМЕР: Как создать класс, который наследует Product:
+    
+    class MyProduct(Product):
+        def __init__(self, name: str, price: float, my_field: str, stock: int = 0):
+            # Вызываем конструктор родителя
+            super().__init__(name, price, "", stock)
+            # Сохраняем свои поля
+            self._my_field = my_field
+        
+        # Переопределяем методы родителя
+        def get_category(self) -> ProductCategory:
+            return ProductCategory.ACCESSORY
+        
+        def get_specifications(self) -> Dict[str, Any]:
+            return {"my_field": self._my_field}
+        
+        def get_warranty_period(self) -> int:
+            return 12
 """
 from lesson_10_OOP_advanced.oop_10 import (
     Inventory,
@@ -33,42 +52,59 @@ from datetime import datetime
 
 
 class Monitor(Product):
-    _brand: str
-    _screen_size: float
-    _resolusion: str
-    _refresh_rate: int
-    _panel_type: str
+    """Класс монитора - пример наследования от Product"""
+    
+    def __init__(self, name: str, price: float, brand: str, 
+                 screen_size: float, resolution: str, 
+                 refresh_rate: int, panel_type: str,
+                 description: str = "", stock: int = 0):
+        # Вызываем конструктор родительского класса
+        super().__init__(name, price, description, stock)
+        # Сохраняем специфичные для монитора поля
+        self._brand = brand
+        self._screen_size = screen_size
+        self._resolution = resolution
+        self._refresh_rate = refresh_rate
+        self._panel_type = panel_type
 
     def get_specifications(self) -> Dict[str, Any]:
+        """Возвращает характеристики монитора"""
         return {
             'brand': self._brand,
-            'screen_size': self.screen_size,
-            'resolution:': self.resolusion,
-            'refresh_rate': self.refresh_rate,
-            'panel_type': self.panel_type
+            'screen_size': f"{self._screen_size}\"",
+            'resolution': self._resolution,
+            'refresh_rate': f"{self._refresh_rate} Гц",
+            'panel_type': self._panel_type
         }
+    
     def get_warranty_period(self) -> int:
+        """Гарантия на монитор - 24 месяца"""
         return 24
+    
     def get_category(self) -> ProductCategory:
+        """Категория товара - монитор"""
         return ProductCategory.MONITOR
+    
     def is_gaming_monitor(self) -> bool:
-        if self.refresh_rate >= 144:
+        """Проверяет, является ли монитор игровым (частота >= 144 Гц)"""
+        if self._refresh_rate >= 144:
             return True
         return False
-    @property
-    def brand(self):
-        return self._brand
 
-    @brand.setter
-    def brand(self, value: str):
-        self._brand = value
-
-# monitor_dell = Monitor()
-# print(monitor_dell.screen_size)
-# print(monitor_dell._brand)
-# print(monitor_dell.brand)
-# monitor_dell.brand = 1
-# print(monitor_dell.brand)
+# Пример использования Monitor:
+# monitor = Monitor(
+#     name="LG UltraGear 27GL850",
+#     price=35990,
+#     brand="LG",
+#     screen_size=27,
+#     resolution="2560x1440",
+#     refresh_rate=144,
+#     panel_type="IPS",
+#     stock=8
+# )
+# print(monitor)
+# print(monitor.get_specifications())
+# print(f"Игровой: {monitor.is_gaming_monitor()}")
 
 # ============= ЗАДАНИЕ 1.1: DiscountManager =============
 
@@ -79,21 +115,92 @@ class Monitor(Product):
 # ============= ЗАДАНИЕ 2: SmartWatch =============
 
 # TODO: Создай класс SmartWatch, который наследует Product
-# Смотри задание в homework_10.md
+# Смотри задание 2 в homework_10.md
+# 
+# ПОДСКАЗКА - структура класса:
+# class SmartWatch(Product):
+#     def __init__(self, name, price, brand, model, display_size, 
+#                  battery_days, has_gps, waterproof_rating, stock=0):
+#         super().__init__(name, price, "", stock)
+#         self._brand = brand
+#         # ... остальные поля
+#     
+#     def get_category(self) -> ProductCategory:
+#         return ProductCategory.ACCESSORY
+#     
+#     def get_specifications(self) -> Dict[str, Any]:
+#         return {...}  # словарь с характеристиками
+#     
+#     def get_warranty_period(self) -> int:
+#         return 12
+#     
+#     def is_suitable_for_sports(self) -> bool:
+#         if self._has_gps == True and self._waterproof_rating:
+#             return True
+#         return False
 
 
 # ============= ЗАДАНИЕ 3: SmartphoneWithCamera =============
 
 # TODO: Создай класс SmartphoneWithCamera, который наследует Smartphone
-# Смотри задание в homework_10.md
+# Смотри задание 3 в homework_10.md
+# 
+# ПОДСКАЗКА - структура класса:
+# class SmartphoneWithCamera(Smartphone):
+#     def __init__(self, name, price, brand, model, screen_size,
+#                  ram_gb, storage_gb, battery_mah,
+#                  main_camera_mp, front_camera_mp, has_optical_zoom,
+#                  stock=0):
+#         # Вызываем конструктор Smartphone
+#         super().__init__(name, price, brand, model, screen_size,
+#                          ram_gb, storage_gb, battery_mah, "", stock)
+#         # Добавляем свои поля
+#         self._main_camera_mp = main_camera_mp
+#         # ... остальные поля
+#     
+#     def get_specifications(self) -> Dict[str, Any]:
+#         specs = super().get_specifications()  # Получаем базовые характеристики
+#         specs["main_camera"] = f"{self._main_camera_mp} МП"
+#         # ... добавляем информацию о камерах
+#         return specs
+#     
+#     def get_camera_rating(self) -> str:
+#         if self._main_camera_mp >= 48 and self._has_optical_zoom == True:
+#             return "Отличная"
+#         elif self._main_camera_mp >= 48:
+#             return "Хорошая"
+#         else:
+#             return "Средняя"
 
 
 # ============= ЗАДАНИЕ 4: Функция отчета =============
 
 # TODO: Создай функцию generate_product_report
-# Используй цикл for для перебора товаров
-# Используй цикл для подсчета общей стоимости
 # Смотри задание 4 в homework_10.md
+# 
+# ПОДСКАЗКА - структура функции:
+# def generate_product_report(products: List[Product]) -> str:
+#     report = "=== ОТЧЕТ ПО ТОВАРАМ ===\n"
+#     
+#     # Цикл для перебора товаров с нумерацией
+#     for i, product in enumerate(products, 1):
+#         name = product.name
+#         category = product.get_category().value
+#         price = product.price
+#         warranty = product.get_warranty_period()
+#         report += f"{i}. {name} [{category}] - {price}₽ (гарантия: {warranty} мес.)\n"
+#     
+#     report += "------------------------\n"
+#     
+#     # Подсчет общей стоимости
+#     total = 0
+#     for product in products:
+#         total += product.price
+#     
+#     report += f"Всего товаров: {len(products)}\n"
+#     report += f"Общая стоимость: {total}₽\n"
+#     
+#     return report
 
 
 # ============= ЗАДАНИЕ 5: Review =============
