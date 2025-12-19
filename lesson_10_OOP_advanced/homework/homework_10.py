@@ -8,9 +8,7 @@ from enum import Enum
 
 from lesson_10_OOP_advanced.oop_10 import (
     Inventory,
-    Order,
     ProductCategory,
-    OrderStatus,
     Smartphone,
     Product
 )
@@ -132,31 +130,17 @@ class DiscountManager:
 # Используй цикл для подсчета общей стоимости
 
 
-# ============= ЗАДАНИЕ 7: Review =============
+# ============= ЗАДАНИЕ 5: Review =============
 
 # TODO: Создай класс Review
 # Используй условия if для валидации рейтинга и комментария
 
 
-# ============= ЗАДАНИЕ 8: PaymentMethod =============
+# ============= ЗАДАНИЕ 6: PaymentMethod =============
 
 # TODO: Создай 3 простых класса для способов оплаты
 # CreditCardPayment, CashPayment, CryptocurrencyPayment
 # Используй цикл for для демонстрации работы всех способов
-
-
-# ============= ЗАДАНИЕ 9: PromoCode =============
-
-# TODO: Создай класс PromoCode
-# Добавь метод apply_promo_code в класс Order
-# Используй условия if для проверки активности промокода и суммы заказа
-
-
-# ============= ЗАДАНИЕ 10: NotificationService =============
-
-# TODO: Создай 3 простых класса для уведомлений
-# EmailNotification, SMSNotification, PushNotification
-# Добавь в Order список уведомлений и используй цикл for для отправки
 
 
 # ============= ТЕСТИРОВАНИЕ =============
