@@ -1,6 +1,6 @@
 # 📚 Домашка Урок 10 - Закрепление ООП
 
-**Дата:** 29.11.2025  
+**Дата:** 29.11.2025
 **Формат:** Решения писать в файле `lesson_10_OOP_advanced/homework/homework_10.py`
 
 ---
@@ -44,6 +44,25 @@ monitor = Monitor(
 print(monitor)
 print(monitor.get_specifications())
 print(f"Игровой: {monitor.is_gaming_monitor()}")
+```
+
+---
+
+### 1.1⃣ Создай систему скидок - класс DiscountManager
+
+**Задача:**
+- Создай класс `DiscountManager` для управления скидками
+- Методы:
+    - `apply_seasonal_discount(inventory: Inventory, discount: float)` - применяет скидку ко всем товарам
+    - `apply_clearance_discount(inventory: Inventory, min_stock: int, discount: float)` - применяет скидку к товарам с остатком меньше `min_stock`
+    - `apply_premium_discount(inventory: Inventory, min_price: float, discount: float)` - скидка на дорогие товары (цена >= min_price)
+    - `reset_all_discounts(inventory: Inventory)` - сбрасывает все скидки (устанавливает в 0)
+
+**Проверка:**
+```python
+discount_mgr = DiscountManager()
+discount_mgr.apply_clearance_discount(inventory, min_stock=10, discount=20)
+# Все товары с остатком < 10 получат скидку 20%
 ```
 
 ---
@@ -104,24 +123,6 @@ print(watch.is_suitable_for_sports())  # Должно вывести True
 
 ---
 
-### 4️⃣ Создай систему скидок - класс DiscountManager
-
-**Задача:**
-- Создай класс `DiscountManager` для управления скидками
-- Методы:
-  - `apply_seasonal_discount(inventory: Inventory, discount: float)` - применяет скидку ко всем товарам
-  - `apply_clearance_discount(inventory: Inventory, min_stock: int, discount: float)` - применяет скидку к товарам с остатком меньше `min_stock`
-  - `apply_premium_discount(inventory: Inventory, min_price: float, discount: float)` - скидка на дорогие товары (цена >= min_price)
-  - `reset_all_discounts(inventory: Inventory)` - сбрасывает все скидки (устанавливает в 0)
-
-**Проверка:**
-```python
-discount_mgr = DiscountManager()
-discount_mgr.apply_clearance_discount(inventory, min_stock=10, discount=20)
-# Все товары с остатком < 10 получат скидку 20%
-```
-
----
 ### 4️⃣ Функция для отчета о товарах
 
 **Задача:**

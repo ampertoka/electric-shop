@@ -79,20 +79,8 @@ class Role(str, Enum):
 # print(role_1)
 
 
-# ============= ЗАДАНИЕ 2: SmartWatch =============
-
-# TODO: Создай класс SmartWatch, который наследует Product
-# Смотри задание в homework_10.md
-
-
-# ============= ЗАДАНИЕ 3: SmartphoneWithCamera =============
-
-# TODO: Создай класс SmartphoneWithCamera, который наследует Smartphone
-# Смотри задание в homework_10.md
-
-
-# ============= ЗАДАНИЕ 4: DiscountManager =============
-### 4️⃣ Создай систему скидок - класс DiscountManager
+# ============= ЗАДАНИЕ 1.1: DiscountManager =============
+### 1.1 Создай систему скидок - класс DiscountManager
 
 """
 **Задача:**
@@ -115,6 +103,20 @@ class DiscountManager:
         for category in ProductCategory:
             inventory.apply_discount_to_category(category.value, discount)
 
+
+# ============= ЗАДАНИЕ 2: SmartWatch =============
+
+# TODO: Создай класс SmartWatch, который наследует Product
+# Смотри задание в homework_10.md
+
+
+# ============= ЗАДАНИЕ 3: SmartphoneWithCamera =============
+
+# TODO: Создай класс SmartphoneWithCamera, который наследует Smartphone
+# Смотри задание в homework_10.md
+
+
+### 4️⃣ Функция для отчета о товарах
 
 # ============= ЗАДАНИЕ 5: Customer =============
 
