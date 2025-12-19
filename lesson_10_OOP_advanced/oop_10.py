@@ -1,19 +1,16 @@
 """
 Урок 10 - Закрепление ООП на примере магазина электронной техники
-Демонстрация всех принципов ООП с интеграцией FastAPI
+Простое ООП для начинающих: классы, наследование, функции, циклы, условия
 
 Принципы ООП:
 1. Инкапсуляция - сокрытие данных (приватные поля, геттеры/сеттеры)
 2. Наследование - иерархия классов Product -> Smartphone, Laptop, etc.
 3. Полиморфизм - разные классы реализуют одинаковые методы по-своему
-4. Абстракция - абстрактные классы и интерфейсы (ABC)
 """
 
-from abc import ABC, abstractmethod
 from datetime import datetime
 from typing import List, Optional, Dict, Any
 from enum import Enum
-from pydantic import BaseModel, Field, field_validator
 
 
 # ============= ENUMS =============
@@ -36,42 +33,11 @@ class OrderStatus(str, Enum):
     CANCELLED = "cancelled"
 
 
-# ============= PYDANTIC MODELS для FastAPI =============
-class ProductBase(BaseModel):
-    """Базовая Pydantic модель для валидации данных продукта"""
-    name: str = Field(..., min_length=1, max_length=100)
-    price: float = Field(..., gt=0)
-    description: Optional[str] = None
-    stock: int = Field(default=0, ge=0)
-    
-    @field_validator('price')
-    @classmethod
-    def validate_price(cls, v):
-        if v <= 0:
-            raise ValueError('Цена должна быть положительной')
-        return round(v, 2)
-
-
-class ProductCreate(ProductBase):
-    """Модель для создания продукта"""
-    category: ProductCategory
-
-
-class ProductResponse(ProductBase):
-    """Модель ответа с продуктом"""
-    id: str
-    category: ProductCategory
-    created_at: datetime
-    
-    class Config:
-        from_attributes = True
-
-
-# ============= АБСТРАКТНЫЕ КЛАССЫ (Абстракция) =============
-class Product(ABC):
+# ============= БАЗОВЫЙ КЛАСС ТОВАРА =============
+class Product:
     """
-    Абстрактный базовый класс для всех товаров
-    Демонстрирует принцип АБСТРАКЦИИ
+    Базовый класс для всех товаров
+    Демонстрирует ИНКАПСУЛЯЦИЮ и НАСЛЕДОВАНИЕ
     """
     
     # Счетчик для генерации ID (класс-переменная)
@@ -164,21 +130,18 @@ class Product(ABC):
             raise ValueError(f"Недостаточно товара на складе. Доступно: {self._stock}")
         self._stock -= quantity
     
-    # Абстрактные методы (должны быть реализованы в наследниках)
-    @abstractmethod
+    # Методы, которые можно переопределить в наследниках
     def get_category(self) -> ProductCategory:
-        """Возвращает категорию товара"""
-        pass
+        """Возвращает категорию товара (по умолчанию ACCESSORY)"""
+        return ProductCategory.ACCESSORY
     
-    @abstractmethod
     def get_specifications(self) -> Dict[str, Any]:
-        """Возвращает технические характеристики товара"""
-        pass
+        """Возвращает технические характеристики товара (по умолчанию пустой словарь)"""
+        return {}
     
-    @abstractmethod
     def get_warranty_period(self) -> int:
-        """Возвращает срок гарантии в месяцах"""
-        pass
+        """Возвращает срок гарантии в месяцах (по умолчанию 12 месяцев)"""
+        return 12
     
     def to_dict(self) -> dict:
         """Преобразует объект в словарь для JSON"""
@@ -204,12 +167,12 @@ class Product(ABC):
         return f"<{self.__class__.__name__}(id={self._id}, name={self._name})>"
 
 
-# ============= КОНКРЕТНЫЕ КЛАССЫ ТОВАРОВ (Наследование и Полиморфизм) =============
+# ============= КОНКРЕТНЫЕ КЛАССЫ ТОВАРОВ (Наследование) =============
 
 class Smartphone(Product):
     """
     Класс смартфона - наследник Product
-    Демонстрирует НАСЛЕДОВАНИЕ и ПОЛИМОРФИЗМ
+    Демонстрирует НАСЛЕДОВАНИЕ
     """
     
     def __init__(self, name: str, price: float, brand: str, model: str,
@@ -223,7 +186,7 @@ class Smartphone(Product):
         self._storage_gb = storage_gb
         self._battery_mah = battery_mah
     
-    # Реализация абстрактных методов (Полиморфизм)
+    # Переопределение методов родительского класса
     def get_category(self) -> ProductCategory:
         return ProductCategory.SMARTPHONE
     
