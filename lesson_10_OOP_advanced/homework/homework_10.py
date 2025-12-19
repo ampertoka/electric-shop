@@ -4,8 +4,6 @@
 
 Импортируй необходимые классы из oop_10.py и создавай свои классы здесь
 """
-from enum import Enum
-
 from lesson_10_OOP_advanced.oop_10 import (
     Inventory,
     ProductCategory,
@@ -71,37 +69,11 @@ class Monitor(Product):
 # print(monitor_dell.brand)
 # monitor_dell.brand = 1
 # print(monitor_dell.brand)
-class Role(str, Enum):
-    """Категории ролей"""
-    ADMIN = "admin"
-    MANAGER = "manager"
-# role_1 = Role('wera', 'kni')
-# print(role_1)
-
 
 # ============= ЗАДАНИЕ 1.1: DiscountManager =============
-### 1.1 Создай систему скидок - класс DiscountManager
 
-"""
-**Задача:**
-- Создай класс `DiscountManager` для управления скидками
-- Методы:
-- `apply_seasonal_discount(inventory: Inventory, discount: float)` - применяет скидку ко всем товарам
-- `apply_clearance_discount(inventory: Inventory, min_stock: int, discount: float)` - применяет скидку к товарам с остатком меньше `min_stock`
-- `apply_premium_discount(inventory: Inventory, min_price: float, discount: float)` - скидка на дорогие товары (цена >= min_price)
-- `reset_all_discounts(inventory: Inventory)` - сбрасывает все скидки (устанавливает в 0)
-
-**Проверка:**
-```python
-discount_mgr = DiscountManager()
-discount_mgr.apply_clearance_discount(inventory, min_stock=10, discount=20)
-# Все товары с остатком < 10 получат скидку 20%
-```
-"""
-class DiscountManager:
-    def apply_seasonal_discount(self, inventory, discount: float):
-        for category in ProductCategory:
-            inventory.apply_discount_to_category(category.value, discount)
+# TODO: Создай класс DiscountManager для управления скидками
+# Смотри задание 1.1 в homework_10.md
 
 
 # ============= ЗАДАНИЕ 2: SmartWatch =============
@@ -116,26 +88,19 @@ class DiscountManager:
 # Смотри задание в homework_10.md
 
 
-### 4️⃣ Функция для отчета о товарах
-
-# ============= ЗАДАНИЕ 5: Customer =============
-
-# TODO: Создай класс Customer
-# Используй циклы for для подсчета суммы и количества заказов
-# Используй условия if для проверки VIP статуса
-
-
-# ============= ЗАДАНИЕ 6: Функция отчета =============
+# ============= ЗАДАНИЕ 4: Функция отчета =============
 
 # TODO: Создай функцию generate_product_report
 # Используй цикл for для перебора товаров
 # Используй цикл для подсчета общей стоимости
+# Смотри задание 4 в homework_10.md
 
 
 # ============= ЗАДАНИЕ 5: Review =============
 
 # TODO: Создай класс Review
 # Используй условия if для валидации рейтинга и комментария
+# Смотри задание 5 в homework_10.md
 
 
 # ============= ЗАДАНИЕ 6: PaymentMethod =============

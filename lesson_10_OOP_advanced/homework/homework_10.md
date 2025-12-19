@@ -48,7 +48,7 @@ print(f"Игровой: {monitor.is_gaming_monitor()}")
 
 ---
 
-### 1.1⃣ Создай систему скидок - класс DiscountManager
+### 1.1️⃣ Создай систему скидок - класс DiscountManager
 
 **Задача:**
 - Создай класс `DiscountManager` для управления скидками
@@ -139,11 +139,11 @@ print(watch.is_suitable_for_sports())  # Должно вывести True
 ```
 === ОТЧЕТ ПО ТОВАРАМ ===
 1. iPhone 15 Pro [smartphone] - 99990₽ (гарантия: 12 мес.)
-2. MacBook Pro 14 [laptop] - 189990₽ (гарантия: 24 мес.)
-3. USB-C кабель [cable] - 1990₽ (гарантия: 6 мес.)
+2. Samsung Galaxy S24 [smartphone] - 79990₽ (гарантия: 12 мес.)
+3. LG UltraGear 27GL850 [monitor] - 35990₽ (гарантия: 24 мес.)
 ------------------------
 Всего товаров: 3
-Общая стоимость: 291970₽
+Общая стоимость: 215970₽
 ```
 
 **Подсказка:** Используй цикл `for i, product in enumerate(products, 1):` для нумерации товаров
