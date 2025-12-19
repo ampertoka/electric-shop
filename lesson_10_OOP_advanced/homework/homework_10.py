@@ -137,6 +137,25 @@ class SmartWatch(Product):
         self._has_gps = has_gps
         self._waterproof_rating = waterproof_rating
 
+    def get_category(self) -> ProductCategory:
+        return ProductCategory.SMARTWATCH
+
+    def get_specifications(self) -> Dict[str, Any]:
+        return {
+            "brand": self._brand,
+            "model": self._model,
+            "display_size": f"{self._display_size}pixel",
+            "battery_days": self._battery_days,
+            "has_gps": self._has_gps,
+            "waterproof_rating": self._waterproof_rating
+        }
+
+    def is_suitable_for_sports(self):
+        if self._has_gps == True and self._waterproof_rating != '':
+            return True
+        else:
+            return False
+
 
 # ПОДСКАЗКА - структура класса:
 # class SmartWatch(Product):
@@ -198,7 +217,14 @@ class SmartWatch(Product):
 
 # TODO: Создай функцию generate_product_report
 # Смотри задание 4 в homework_10.md
-# 
+def generate_product_report(products: List[Product]) -> str:
+    report = ''
+    print(products[0].name)
+    for product in products:
+        print(product.name)
+        print(product.get_category().value)
+        report += product.name
+    return report
 # ПОДСКАЗКА - структура функции:
 # def generate_product_report(products: List[Product]) -> str:
 #     report = "=== ОТЧЕТ ПО ТОВАРАМ ===\n"
@@ -309,10 +335,23 @@ def test_homework():
     # print(monitor)
 
     # # Тест 2: SmartWatch
-    # print("\n2. Тест SmartWatch")
-    # print("-" * 80)
-    # watch = SmartWatch(...)
-    # print(watch)
+    print("\n2. Тест SmartWatch")
+    print("-" * 80)
+    watch = SmartWatch(
+        name="Apple Watch Series 9",
+        price=39990,
+        brand="Apple",
+        model="Series 9",
+        display_size=1.9,
+        battery_days=2,
+        has_gps=True,
+        waterproof_rating="5ATM",
+        stock=12,
+        description=''
+    )
+    print(watch.is_suitable_for_sports())
+    print(watch)
+    print(generate_product_report([watch, watch]))
 
     # И так далее...
 

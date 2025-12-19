@@ -19,6 +19,7 @@ class ProductCategory(str, Enum):
     SMARTPHONE = "smartphone"
     ACCESSORY = "accessory"
     MONITOR = "monitor"
+    SMARTWATCH = "smartwatch"
 
 
 # ============= БАЗОВЫЙ КЛАСС ТОВАРА =============
